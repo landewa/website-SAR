@@ -68,6 +68,7 @@ export interface RealWorldScenario {
   tagEn: string;
   tagId: string;
   image: string;
+  fallbackImage?: string;
   telemetryEn: string;
   telemetryId: string;
   amountSar: string;

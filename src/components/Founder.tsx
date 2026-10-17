@@ -42,6 +42,9 @@ export const Founder: React.FC<FounderProps> = ({ lang }) => {
                 <img
                   src="/founder-zulfakkar.png"
                   alt="Zulfakkar - Founder & Vision Holder of SAADA Reserve"
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/founder_zulfakkar_portrait_1792217011199.jpg';
+                  }}
                   className="w-full h-full object-contain bg-[#0a0e1c] transition-transform duration-700 group-hover:scale-102"
                 />
               </div>

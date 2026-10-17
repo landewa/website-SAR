@@ -3,6 +3,10 @@ import { translations } from '../i18n/translations';
 import { Language, EcosystemProduct } from '../types';
 import { Shield, CreditCard, Landmark, Lock, ArrowUpRight } from 'lucide-react';
 
+import reserveVaultImg from '../assets/images/ecosystem_reserve_liquidity_1792215134811.jpg';
+import governanceImg from '../assets/images/ecosystem_governance_portal_1792215134777.jpg';
+import gatewayImg from '../assets/images/hero_cinematic_vault_1792215134506.jpg';
+
 interface EcosystemProps {
   lang: Language;
 }
@@ -19,7 +23,7 @@ export const Ecosystem: React.FC<EcosystemProps> = ({ lang }) => {
       descriptionEn: t.vaultDesc,
       descriptionId: t.vaultDesc,
       specs: ['Cold Collateral Buffer', 'On-Chain Proof of Reserve', 'Multi-Sig Governance'],
-      image: '/src/assets/images/ecosystem_reserve_liquidity_1792215134811.jpg',
+      image: reserveVaultImg,
       icon: <Shield className="w-5 h-5 text-amber-400" />,
     },
     {
@@ -29,7 +33,7 @@ export const Ecosystem: React.FC<EcosystemProps> = ({ lang }) => {
       descriptionEn: t.governanceDesc,
       descriptionId: t.governanceDesc,
       specs: ['DAO Voting Logic', 'Treasury Allocation Quorum', 'Timelock Execution'],
-      image: '/src/assets/images/ecosystem_governance_portal_1792215134777.jpg',
+      image: governanceImg,
       icon: <Landmark className="w-5 h-5 text-indigo-400" />,
     },
     {
@@ -39,7 +43,7 @@ export const Ecosystem: React.FC<EcosystemProps> = ({ lang }) => {
       descriptionEn: t.gatewayDesc,
       descriptionId: t.gatewayDesc,
       specs: ['Micro-Fee Routing', 'Sub-Second Finality', 'Merchant SDKs'],
-      image: '/src/assets/images/hero_cinematic_vault_1792215134506.jpg',
+      image: gatewayImg,
       icon: <CreditCard className="w-5 h-5 text-sky-400" />,
     },
     {
@@ -117,6 +121,12 @@ export const Ecosystem: React.FC<EcosystemProps> = ({ lang }) => {
                   src={prod.image}
                   alt={prod.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    if (prod.id === 'reserve-vault') e.currentTarget.src = '/images/ecosystem_reserve_liquidity_1792215134811.jpg';
+                    else if (prod.id === 'governance') e.currentTarget.src = '/images/ecosystem_governance_portal_1792215134777.jpg';
+                    else if (prod.id === 'pay-gateway') e.currentTarget.src = '/images/hero_cinematic_vault_1792215134506.jpg';
+                    else if (prod.id === 'custody') e.currentTarget.src = '/token-sar.png';
+                  }}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080D1A] via-transparent to-transparent opacity-80" />

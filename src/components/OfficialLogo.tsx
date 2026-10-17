@@ -22,8 +22,12 @@ export const OfficialLogo: React.FC<OfficialLogoProps> = ({
           alt="Official SAADA Reserve Logo"
           className="w-full h-full object-contain rounded-full drop-shadow-[0_2px_8px_rgba(245,158,11,0.2)]"
           onError={(e) => {
-            // Graceful fallback display if file is awaiting placement in /public
             const target = e.currentTarget;
+            if (target.src !== window.location.origin + '/images/sar_emblem_logo_1792215133121.jpg') {
+              target.src = '/images/sar_emblem_logo_1792215133121.jpg';
+              return;
+            }
+            // Graceful fallback display if files are awaiting placement
             target.style.display = 'none';
             const parent = target.parentElement;
             if (parent && !parent.querySelector('.logo-fallback')) {

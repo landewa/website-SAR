@@ -23,6 +23,11 @@ import {
   Info
 } from 'lucide-react';
 
+import retailPaymentImg from '../assets/images/saada_city_retail_payment_1792221319507.jpg';
+import smartTransitImg from '../assets/images/saada_city_smart_transit_1792221320905.jpg';
+import cleanEnergyImg from '../assets/images/saada_city_clean_energy_1792221320929.jpg';
+import reserveVaultImg from '../assets/images/ecosystem_reserve_liquidity_1792215134811.jpg';
+
 interface RealWorldVideoProps {
   lang: Language;
 }
@@ -62,7 +67,8 @@ export const RealWorldVideo: React.FC<RealWorldVideoProps> = ({ lang }) => {
       descId: t.scene1Desc,
       tagEn: t.scene1Tag,
       tagId: t.scene1Tag,
-      image: '/src/assets/images/saada_city_retail_payment_1792221319507.jpg',
+      image: retailPaymentImg,
+      fallbackImage: '/images/saada_city_retail_payment_1792221319507.jpg',
       telemetryEn: 'POS #041 · SAR Instant Tap-to-Pay · Gas: 0.0001 BNB · Finality: 0.4s',
       telemetryId: 'Kasir #041 · Pembayaran Ritel Cepat SAR · Biaya Gas Rendah · Finalitas: 0.4d',
       amountSar: '18.50 SAR',
@@ -78,7 +84,8 @@ export const RealWorldVideo: React.FC<RealWorldVideoProps> = ({ lang }) => {
       descId: t.scene2Desc,
       tagEn: t.scene2Tag,
       tagId: t.scene2Tag,
-      image: '/src/assets/images/saada_city_smart_transit_1792221320905.jpg',
+      image: smartTransitImg,
+      fallbackImage: '/images/saada_city_smart_transit_1792221320905.jpg',
       telemetryEn: 'SAADA RIDE Gate #07 · Autonomous Concourse · Micro-Tx Verified',
       telemetryId: 'Gerbang SAADA RIDE #07 · Koridor Otonom · Transaksi Mikro Terverifikasi',
       amountSar: '2.40 SAR',
@@ -94,7 +101,8 @@ export const RealWorldVideo: React.FC<RealWorldVideoProps> = ({ lang }) => {
       descId: t.scene3Desc,
       tagEn: t.scene3Tag,
       tagId: t.scene3Tag,
-      image: '/src/assets/images/saada_city_clean_energy_1792221320929.jpg',
+      image: cleanEnergyImg,
+      fallbackImage: '/images/saada_city_clean_energy_1792221320929.jpg',
       telemetryEn: 'SolarGrid Node 42-B · 142 kWh P2P Clearing · Smart Contract Executed',
       telemetryId: 'Node SolarGrid 42-B · Kliring 142 kWh P2P · Smart Contract Tereksekusi',
       amountSar: '34.20 SAR',
@@ -110,7 +118,8 @@ export const RealWorldVideo: React.FC<RealWorldVideoProps> = ({ lang }) => {
       descId: t.scene4Desc,
       tagEn: t.scene4Tag,
       tagId: t.scene4Tag,
-      image: '/src/assets/images/ecosystem_reserve_liquidity_1792215134811.jpg',
+      image: reserveVaultImg,
+      fallbackImage: '/images/ecosystem_reserve_liquidity_1792215134811.jpg',
       telemetryEn: 'Multi-Sig Reserve Vault · Liquidity Rebalance · Proof of Reserve Verified',
       telemetryId: 'Brankas Cadangan Multi-Sig · Rebalancing Likuiditas · Bukti Cadangan Terverifikasi',
       amountSar: '2,500.00 SAR',
@@ -332,6 +341,11 @@ export const RealWorldVideo: React.FC<RealWorldVideoProps> = ({ lang }) => {
                   <img
                     src={sc.image}
                     alt={sc.titleEn}
+                    onError={(e) => {
+                      if (sc.fallbackImage && e.currentTarget.src !== sc.fallbackImage) {
+                        e.currentTarget.src = sc.fallbackImage;
+                      }
+                    }}
                     style={{
                       transform: isCurrent
                         ? `scale(${1.02 + sceneProgress * 0.06}) translate(${

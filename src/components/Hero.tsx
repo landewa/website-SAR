@@ -4,6 +4,7 @@ import { translations } from '../i18n/translations';
 import { Language } from '../types';
 import { CONTRACT_ADDRESS, BSCSCAN_TOKEN_URL } from '../services/blockchain';
 import { Coin3D } from './Coin3D';
+import heroVaultImg from '../assets/images/hero_cinematic_vault_1792215134506.jpg';
 
 interface HeroProps {
   lang: Language;
@@ -25,9 +26,12 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenWhitepaper }) => {
       {/* Background Architectural Mesh & Ambience */}
       <div className="absolute inset-0 -z-10 opacity-30 pointer-events-none">
         <img
-          src="/src/assets/images/hero_cinematic_vault_1792215134506.jpg"
+          src={heroVaultImg}
           alt="SAADA Reserve Vault Ambience"
           className="w-full h-full object-cover object-center filter saturate-50 brightness-40"
+          onError={(e) => {
+            e.currentTarget.src = '/images/hero_cinematic_vault_1792215134506.jpg';
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050811] via-[#050811]/90 to-[#050811]" />
       </div>

@@ -123,7 +123,7 @@ export const Coin3D: React.FC<Coin3DProps> = ({ lang, className = '' }) => {
       envMapIntensity: 1.2,
     });
 
-    // Texture Loader for Official SAR Token Coin (Direct genuine file)
+    // Texture Loader for Official SAR Token Coin (Direct genuine file with fallback)
     const textureLoader = new THREE.TextureLoader();
     const emblemTexture = textureLoader.load(
       '/token-sar.png',
@@ -131,6 +131,17 @@ export const Coin3D: React.FC<Coin3DProps> = ({ lang, className = '' }) => {
         tex.colorSpace = THREE.SRGBColorSpace;
         tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
         tex.needsUpdate = true;
+      },
+      undefined,
+      () => {
+        // Fallback to bundled coin image if token-sar.png is not found
+        textureLoader.load('/images/official_sar_token_coin_1792217011284.jpg', (fallbackTex) => {
+          fallbackTex.colorSpace = THREE.SRGBColorSpace;
+          frontFaceMaterial.map = fallbackTex;
+          frontFaceMaterial.needsUpdate = true;
+          backFaceMaterial.map = fallbackTex;
+          backFaceMaterial.needsUpdate = true;
+        });
       }
     );
 

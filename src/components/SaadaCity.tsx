@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 
 import { RealWorldVideo } from './RealWorldVideo';
+import masterConceptImg from '../assets/images/saada_city_master_concept_1792217012267.jpg';
+import innovationHubImg from '../assets/images/saada_city_innovation_hub_1792217012154.jpg';
 
 interface SaadaCityProps {
   lang: Language;
@@ -160,9 +162,12 @@ export const SaadaCity: React.FC<SaadaCityProps> = ({ lang }) => {
           {/* Main Panoramic Render (16:9 Master Concept) */}
           <div className="lg:col-span-7 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden relative group flex flex-col justify-end min-h-[380px]">
             <img
-              src="/src/assets/images/saada_city_master_concept_1792217012267.jpg"
+              src={masterConceptImg}
               alt="SAADA City Master Concept Visualization"
               className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-700"
+              onError={(e) => {
+                e.currentTarget.src = '/images/saada_city_master_concept_1792217012267.jpg';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/40 to-transparent" />
             
@@ -182,9 +187,12 @@ export const SaadaCity: React.FC<SaadaCityProps> = ({ lang }) => {
           {/* Secondary Visual (4:3 Innovation & Commercial Center) */}
           <div className="lg:col-span-5 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden relative group flex flex-col justify-end min-h-[380px]">
             <img
-              src="/src/assets/images/saada_city_innovation_hub_1792217012154.jpg"
+              src={innovationHubImg}
               alt="SAADA City Commercial and Education Hub"
               className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-700"
+              onError={(e) => {
+                e.currentTarget.src = '/images/saada_city_innovation_hub_1792217012154.jpg';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#050811] via-[#050811]/40 to-transparent" />
             
