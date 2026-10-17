@@ -1,0 +1,6 @@
+{
+  "name": "SAADA Reserve — Official Digital Asset Portal",
+  "description": "Official portal for SAADA Reserve (SAR) on BNB Smart Chain. Transparent on-chain metrics, tokenomics, verified contract data, and ecosystem infrastructure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,4 @@
+# robots.txt for https://saadareserve.com/
+User-agent: *
+Allow: /
+Sitemap: https://saadareserve.com/sitemap.xml
